@@ -1,0 +1,2 @@
+[entry_points]
+main = datakickstart_dabs.main:main
