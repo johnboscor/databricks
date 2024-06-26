@@ -6,7 +6,7 @@ bundle:
   name: datakickstart_dabs
 
 include:
-  - resources/*.yml
+  - dabs_sample_project/resources/*.yml
 
 targets:
   # The 'dev' target, used for development purposes.
@@ -19,6 +19,8 @@ targets:
     default: true
     workspace:
       host: https://dbc-77033125-0df8.cloud.databricks.com/
+    run_as:
+      service_principal_name: c199dd0f-83f2-40b0-bf8b-5241cec06539
 
   staging:
     # For staging deployments, we only have a single copy, so we override the
