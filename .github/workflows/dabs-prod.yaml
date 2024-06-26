@@ -1,0 +1,50 @@
+name: Deploy to Prod
+
+concurrency: 1
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "dabs_sample_project/resources/*.yml"
+      - "dabs_sample_project/src/*"
+
+jobs:
+  deploy:
+    name: "Deploy bundle"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: databricks/setup-cli@main
+      
+      - run: databricks bundle deploy -t prod
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_BUNDLE_ENV: prod
+
+  Run_jobs:
+    name: "Run jobs"
+    runs-on: ubuntu-latest
+
+    needs:
+      - deploy
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: databricks/setup-cli@main
+
+      - shell: bash
+        name: Run Jobs
+        run: |
+          set -o pipefail
+          databricks bundle run -t prod datakickstart_dabs_job --refresh-all 2>&1 | tee output.log
+          databricks bundle run -t prod notebook_validation_job --refresh-all 2>&1 | tee output.log
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_BUNDLE_ENV: prod
