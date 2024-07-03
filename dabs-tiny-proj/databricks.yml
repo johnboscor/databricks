@@ -1,0 +1,16 @@
+bundle:
+  name: hello-bundle
+
+resources:
+  jobs:
+    hello-job:
+      name: hello-job
+      tasks:
+        - task_key: hello-task
+          existing_cluster_id: 0702-181117-quyv7sru
+          notebook_task:
+            notebook_path: ./hello.py
+
+targets:
+  dev:
+    default: true
