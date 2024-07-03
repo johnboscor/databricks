@@ -1,4 +1,4 @@
-name: Deploy to DEV
+name: Deploy to DEV - sample
 
 concurrency: 1
 
@@ -14,7 +14,6 @@ on:
     paths:
       - "dabs_sample_project/resources/*.yml"
       - "dabs_sample_project/src/*"
-      - "dabs-tiny-proj/hello.py"
 
 jobs:
   deploy:
@@ -33,12 +32,6 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_BUNDLE_ENV: dev
 
-      - run: databricks bundle deploy -t dev 
-        working-directory: dabs-tiny-proj/
-        env:
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_BUNDLE_ENV: dev
       
 #   test_jobs:
 #     name: "Test jobs"
