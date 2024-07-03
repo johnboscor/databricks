@@ -33,12 +33,12 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_BUNDLE_ENV: dev
 
-      # - run: databricks bundle deploy -t dev
-      #   working-directory: dabs-tiny-proj/
-      #   env:
-      #     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-      #     DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-      #     DATABRICKS_BUNDLE_ENV: dev
+      - run: databricks bundle deploy -t dev
+        working-directory: dabs-tiny-proj/
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_BUNDLE_ENV: dev
       
 #   test_jobs:
 #     name: "Test jobs"
