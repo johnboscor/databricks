@@ -18,10 +18,10 @@ targets:
     mode: development
     default: true
     workspace:
-      #host: https://dbc-77033125-0df8.cloud.databricks.com/
-      host: https://dbc-ad822119-1b98.cloud.databricks.com/
+      host: https://dbc-77033125-0df8.cloud.databricks.com/
+      #host: https://dbc-ad822119-1b98.cloud.databricks.com/
     run_as:
-      user_name: c199dd0f-83f2-40b0-bf8b-5241cec06539
+      user_name: rjohnbosco@gmail.com
 
   staging:
     # For staging deployments, we only have a single copy, so we override the
