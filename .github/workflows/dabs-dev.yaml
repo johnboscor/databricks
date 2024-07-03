@@ -14,7 +14,7 @@ on:
     paths:
       - "dabs_sample_project/resources/*.yml"
       - "dabs_sample_project/src/*"
-      - "dabs-tiny-project/src/*"
+      - "dabs-tiny-proj/hello.py"
 
 jobs:
   deploy:
