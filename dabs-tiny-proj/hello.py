@@ -1,3 +1,3 @@
 # Databricks notebook source
 # MAGIC %sql
-# MAGIC select * from samples.nyctaxi.trips limit 5;
+# MAGIC select * from samples.nyctaxi.trips limit 8;
